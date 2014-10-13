@@ -1,0 +1,13 @@
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\bin\Debug\TechTalk.JiraRestClient.dll
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\bin\Debug\TechTalk.JiraRestClient.pdb
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\bin\Debug\RestSharp.dll
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\bin\Debug\RestSharp.xml
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\obj\Debug\TechTalk.JiraRestClient.dll
+C:\Users\u6022380\Desktop\JiraRestClient-master\TechTalk.JiraRestClient\obj\Debug\TechTalk.JiraRestClient.pdb
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\bin\Debug\TechTalk.JiraRestClient.dll
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\bin\Debug\TechTalk.JiraRestClient.pdb
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\bin\Debug\RestSharp.dll
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\bin\Debug\RestSharp.xml
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\obj\Debug\TechTalk.JiraRestClient.csprojResolveAssemblyReference.cache
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\obj\Debug\TechTalk.JiraRestClient.dll
+C:\Projects\Bugger\JiraBugger\TechTalk.JiraRestClient\obj\Debug\TechTalk.JiraRestClient.pdb

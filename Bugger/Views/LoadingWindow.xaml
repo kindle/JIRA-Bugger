@@ -1,0 +1,15 @@
+﻿<Window x:Class="JiraBugger.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoadingWindow" Height="50" Width="100"
+        ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Topmost="True" ShowInTaskbar="false" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Storyboard x:Key="LoadingStoryboard">
+            <DoubleAnimation From="1" To="1" Duration="0:0:2" Storyboard.TargetName="MyBorder" Storyboard.TargetProperty="Opacity" />
+        </Storyboard>
+    </Window.Resources>
+    <Border CornerRadius="3" Opacity="0.9" Background="#B3d66e" x:Name="MyBorder">
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Loading...</TextBlock>
+    </Border>
+</Window>

@@ -1,0 +1,115 @@
+﻿<Window x:Class="JiraBugger.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vc="clr-namespace:JiraBugger" Topmost="True" WindowStartupLocation="CenterScreen"
+        Title="Jira Bugger" Height="480" Width="640" ResizeMode="CanResizeWithGrip"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Border Background="#b3d66e" CornerRadius="3" Opacity="0.95" Padding="10" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <Grid Background="Transparent">
+        <Grid.Resources>
+            <vc:StatusToSolidColorBrushValueConverter x:Key="StatusValueConverter"></vc:StatusToSolidColorBrushValueConverter>
+            <Style x:Key="NoHeaderGridViewStyle" TargetType="{x:Type GridViewColumnHeader}">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0"></RowDefinition>
+        </Grid.RowDefinitions>
+        <DockPanel Width="auto" Height="25" Grid.Row="0">
+            <TextBlock FontWeight="SemiBold">JIRA Bugger</TextBlock>
+            <Button Margin="5" Height="16" Width="16" HorizontalAlignment="Right" Click="CloseButton_Click">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/resources/MainWindowCloseButton.png"></Image>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </DockPanel>
+        <TabControl x:Name="IssueListView" Grid.Row="1">
+            <TabItem Header="My Bugs">
+                <ListView x:Name="MyBugsListView"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        Width="{Binding BuggerContainer.Width}" 
+                        BorderThickness="0"
+                        ItemsSource="{Binding MyBugsModel}">
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="MyBugsListViewItem_MouseDoubleClick" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource NoHeaderGridViewStyle}">
+                            <GridViewColumn Width="{Binding ElementName=statusBar, Path=ActualWidth}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25"/>
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                <Border Width="5" Background="{Binding Path=Status, Converter={StaticResource StatusValueConverter}, ConverterParameter=Bug}"></Border>
+                                                <Border Margin="3,0,0,0" Width="15" BorderThickness="0.3" BorderBrush="LightGray"></Border>
+                                                <TextBlock TextWrapping="NoWrap" Text="{Binding Key}" Margin="3,0,0,0"></TextBlock>
+                                            </StackPanel>
+                                            <TextBlock Grid.Column="1" TextWrapping="NoWrap" Text="{Binding Summary}" TextTrimming="CharacterEllipsis" Margin="5,0,0,0"></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="My Stories">
+                <ListView x:Name="MyStoriesListView" 
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    BorderThickness="0"
+                    ItemsSource="{Binding MyStoriesModel}">
+                    <ListView.Resources>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="MyStoriesListViewItem_MouseDoubleClick" />
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource NoHeaderGridViewStyle}">
+                            <GridViewColumn  Width="{Binding ElementName=statusBar, Path=ActualWidth}">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25"/>
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Orientation="Horizontal" Grid.Column="0">
+                                                <Border Width="5" Background="{Binding Path=Status, Converter={StaticResource StatusValueConverter}, ConverterParameter=Story}"></Border>
+                                                <Border Margin="3,0,0,0" Width="15" BorderThickness="0.3" BorderBrush="LightGray"></Border>
+                                                <TextBlock TextWrapping="NoWrap" Text="{Binding Key}" Margin="3,0,0,0"></TextBlock>
+                                            </StackPanel>
+                                            <TextBlock Grid.Column="1" TextWrapping="NoWrap" Text="{Binding Summary}" TextTrimming="CharacterEllipsis" Margin="5,0,0,0"></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Flagged" Visibility="Collapsed">
+                <ListView x:Name="MyFlagged" Height="auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"></ListView>
+            </TabItem>
+        </TabControl>
+        <StatusBar Grid.Row="2" Background="Transparent" Foreground="Black" x:Name="statusBar">
+            <TextBlock x:Name="statusBarText"></TextBlock>
+        </StatusBar>
+    </Grid>
+    </Border>
+</Window>
